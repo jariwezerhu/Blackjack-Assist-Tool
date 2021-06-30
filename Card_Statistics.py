@@ -157,7 +157,7 @@ def monte_carlo_player(hand, deck, dealer_odds, time_limit):
     end_time = time.time() + (time_limit / 2)
     count = 0
     for i in range(0, len(temp_hand)):
-        if temp_hand[i] == 11:
+        if temp_hand[i] == 11 and sum(temp_hand) < 12:
             temp_hand[i] = 1
     while time.time() <= end_time:
         player_total = draw_random(temp_hand, deck, sum(temp_hand) + 1)
@@ -185,8 +185,7 @@ def mcp_tostring(player_odds, position):
     """Puts the player's odds into strings for the user to read"""
     stand_odds = player_odds[0]
     hit_odds = player_odds[1]
-    print("\nPlayer {}'s odds when standing:".format(position).ljust(40) + "Player {}'s odds when hitting: (does not "
-                                                                           "work very well with aces)".format(
+    print("\nPlayer {}'s odds when standing:".format(position).ljust(40) + "Player {}'s odds when hitting once:".format(
         position))
     for i in stand_odds:
         print("   Odds to {}: {}%".format(i, round((stand_odds[i] * 100), 3)).ljust(40)
@@ -198,7 +197,7 @@ def odds_tostring(mcd, mcp, position):
     """Combines the strings and gives a recommendation to the user"""
     mcd_tostring(mcd)
     mcp_tostring(mcp, position)
-    if (mcp[1]["win"] + mcp[1]["tie"]) > 65:
+    if (mcp[1]["win"] + mcp[1]["tie"]) > 0.65:
         print("\nPlayer should hit or double")
         pass
     if mcp[1]["bust"] == 0:

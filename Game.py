@@ -41,3 +41,4 @@ def game():
             position += 1
             hand.clear()
         Player.dealer_draw(deck, dealer)
+        print("\n---------------------------------------------------------------------------------------------")
