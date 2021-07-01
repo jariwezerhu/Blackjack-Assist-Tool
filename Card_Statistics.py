@@ -199,12 +199,12 @@ def odds_tostring(mcd, mcp, position):
     mcp_tostring(mcp, position)
     if (mcp[1]["win"] + mcp[1]["tie"]) > 0.65:
         print("\nPlayer should hit or double")
-        pass
+        return
     if mcp[1]["bust"] == 0:
         print("\nPlayer should hit")
-        pass
+        return
     elif mcp[0]["lose"] < mcp[1]["lose"]:
         print("\nPlayer should stand")
-        pass
+        return
     else:
         print("\nPlayer should hit")

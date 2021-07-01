@@ -116,6 +116,7 @@ def round_start(players, deck, dealer_cards):
     """Sets up the round: User inputs every player's initial cards and the dealer's card"""
     count = 1
     for i in range(0, len(players)):
+        players[i] = []
         # User inserts cards drawn per player TODO: Automate in future using "RAIN MAN 2.0"
         print("\nPlayer {}'s first card:".format(count))
         draw_card(deck, players[i])
